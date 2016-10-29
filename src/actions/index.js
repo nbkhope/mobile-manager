@@ -62,7 +62,7 @@ const loginUserSuccess = (dispatch, user) => {
   });
 
   // To switch to the EmployeeList scene
-  Actions.employeeList();
+  Actions.main();
 };
 
 const loginUserFail = (dispatch) => {
