@@ -1,4 +1,5 @@
 import firebase from 'firebase';
+import { Actions } from 'react-native-router-flux';
 
 // Import action types
 import {
@@ -59,6 +60,9 @@ const loginUserSuccess = (dispatch, user) => {
     type: LOGIN_USER_SUCCESS,
     payload: user
   });
+
+  // To switch to the EmployeeList scene
+  Actions.employeeList();
 };
 
 const loginUserFail = (dispatch) => {
