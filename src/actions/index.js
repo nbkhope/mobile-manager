@@ -41,7 +41,11 @@ export const loginUser = ({ email, password }) => {
             loginUserSuccess(dispatch, user);
           })
           // dispatches a LOGIN_USER_FAIL if fails even to create an account
-          .catch(() => loginUserFail(dispatch));
+          .catch((registrationError) => {
+            console.log(registrationError);
+
+            loginUserFail(dispatch);
+          });
       })
       ;
   };
