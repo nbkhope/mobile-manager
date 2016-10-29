@@ -27,10 +27,7 @@ export const loginUser = ({ email, password }) => {
       .then(user => {
         console.log(user);
 
-        dispatch({
-          type: LOGIN_USER_SUCCESS,
-          payload: user
-        });
+        loginUserSuccess(dispatch, user);
       })
       .catch(error => {
         console.log(error);
@@ -40,12 +37,16 @@ export const loginUser = ({ email, password }) => {
         firebase.auth().createUserWithEmailAndPassword(email, password)
           .then(user => {
             // logs the user in after creating new account
-            dispatch({
-              type: LOGIN_USER_SUCCESS,
-              payload: user
-            });
+            loginUserSuccess(dispatch, user);
           });
       })
       ;
   };
+};
+
+const loginUserSuccess = (dispatch, user) => {
+  dispatch({
+    type: LOGIN_USER_SUCCESS,
+    payload: user
+  });
 };
