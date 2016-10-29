@@ -8,13 +8,13 @@ Run npm to install all dependencies:
 npm install
 ```
 
-For iOS, run the simulator using:
+For **iOS**, run the simulator using:
 
 ```sh
 react-native run-ios
 ```
 
-For Android, use:
+For **Android**, use:
 
 ```sh
 react-native run-android
