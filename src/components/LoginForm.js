@@ -16,12 +16,14 @@ class LoginForm extends Component {
             label='Email'
             placeholder='email@mail.com'
             onChangeText={this.onEmailChange.bind(this)}
+            value={this.props.email}
           />
         </CardSection>
         <CardSection>
           <Input
             label='Password'
             placeholder='password'
+            secureTextEntry
           />
         </CardSection>
         <CardSection>
