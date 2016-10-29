@@ -19,6 +19,17 @@ class LoginForm extends Component {
     this.props.loginUser({ email, password });
   }
 
+  // Have this so empty error message will not take up space in the layout
+  renderErrorMessage() {
+    if (this.props.error !== '') {
+      return (
+        <Text style={styles.errorTextStyle}>
+          {this.props.error}
+        </Text>
+      );
+    }
+  }
+
   render() {
     return (
       <Card>
@@ -41,9 +52,7 @@ class LoginForm extends Component {
           />
         </CardSection>
 
-        <Text style={styles.errorTextStyle}>
-          {this.props.error}
-        </Text>
+        {this.renderErrorMessage()}
 
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>
