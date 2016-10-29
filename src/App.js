@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { View } from 'react-native';
 import firebase from 'firebase';
 import ReduxThunk from 'redux-thunk';
 import reducers from './reducers';
@@ -27,9 +26,7 @@ class App extends Component {
 
     return (
       <Provider store={store} >
-        <View>
-          <Router />
-        </View>
+        <Router />
       </Provider>
     );
   }
