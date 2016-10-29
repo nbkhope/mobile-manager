@@ -4,7 +4,8 @@ import firebase from 'firebase';
 import {
   EMAIL_CHANGED,
   PASSWORD_CHANGED,
-  LOGIN_USER_SUCCESS
+  LOGIN_USER_SUCCESS,
+  LOGIN_USER_FAIL
 } from './types';
 
 export const emailChanged = (email) => {
@@ -38,7 +39,9 @@ export const loginUser = ({ email, password }) => {
           .then(user => {
             // logs the user in after creating new account
             loginUserSuccess(dispatch, user);
-          });
+          })
+          // dispatches a LOGIN_USER_FAIL if fails even to create an account
+          .catch(() => loginUserFail(dispatch));
       })
       ;
   };
@@ -48,5 +51,11 @@ const loginUserSuccess = (dispatch, user) => {
   dispatch({
     type: LOGIN_USER_SUCCESS,
     payload: user
+  });
+};
+
+const loginUserFail = (dispatch) => {
+  dispatch({
+    type: LOGIN_USER_FAIL
   });
 };
