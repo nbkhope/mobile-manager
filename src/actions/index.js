@@ -32,7 +32,20 @@ export const loginUser = ({ email, password }) => {
           payload: user
         });
       })
-      .catch(error => console.log(error))
+      .catch(error => {
+        console.log(error);
+
+        // If there was a problem signing in, actually let us create a new
+        // account with that information
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+          .then(user => {
+            // logs the user in after creating new account
+            dispatch({
+              type: LOGIN_USER_SUCCESS,
+              payload: user
+            });
+          });
+      })
       ;
   };
 };
