@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Card, CardSection, Input, Button } from './common';
+import { employeeUpdate } from '../actions/EmployeeActions';
 
 class EmployeeCreate extends Component {
   render() {
@@ -18,7 +19,7 @@ class EmployeeCreate extends Component {
         </CardSection>
 
         <CardSection>
-          <Input 
+          <Input
             label='Phone'
             placeholder='123-456-7890'
             value={phone}
@@ -41,4 +42,4 @@ const mapStateToProps = state => {
   return { name, phone, shift };
 };
 
-export default connect(mapStateToProps)(EmployeeCreate);
+export default connect(mapStateToProps, { employeeUpdate })(EmployeeCreate);
