@@ -16,9 +16,9 @@ class EmployeeListItem extends Component {
       <TouchableWithoutFeedback onPress={this.onRowPress.bind(this)}>
         <View>
           <CardSection>
-          <Text style={styles.titleStyle}>
-          {name}
-          </Text>
+            <Text style={styles.titleStyle}>
+            {name}
+            </Text>
           </CardSection>
         </View>
       </TouchableWithoutFeedback>
