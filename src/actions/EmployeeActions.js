@@ -45,3 +45,7 @@ export const employeesFetch = () => {
       });
   };
 };
+
+export const employeeEdit = (employee) => {
+
+};
