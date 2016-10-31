@@ -4,6 +4,7 @@ import LoginForm from './components/LoginForm';
 import EmployeeList from './components/EmployeeList';
 import EmployeeCreate from './components/EmployeeCreate';
 import EmployeeEdit from './components/EmployeeEdit';
+import { logoutUser } from './actions';
 
 const RouterComponent = () => {
   return (
@@ -18,6 +19,8 @@ const RouterComponent = () => {
           title="Employees"
           rightTitle="Add"
           onRight={() => Actions.employeeCreate()}
+          leftTitle="Logout"
+          onLeft={() => logoutUser()}
           initial
         />
         <Scene

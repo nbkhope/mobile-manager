@@ -70,3 +70,11 @@ const loginUserFail = (dispatch) => {
     type: LOGIN_USER_FAIL
   });
 };
+
+export const logoutUser = () => {
+  firebase.auth().signOut()
+    .then(() => {
+      // Go back to the login scene
+      Actions.auth();
+    });
+};
