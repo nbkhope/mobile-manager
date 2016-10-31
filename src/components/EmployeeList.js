@@ -1,8 +1,9 @@
 import _ from 'lodash';
 import React, { Component } from 'react';
-import { ListView, View, Text } from 'react-native';
+import { ListView } from 'react-native';
 import { connect } from 'react-redux';
 import { employeesFetch } from '../actions';
+import EmployeeListItem from './EmployeeListItem';
 
 class EmployeeList extends Component {
   componentWillMount() {
@@ -25,7 +26,7 @@ class EmployeeList extends Component {
 
   renderRow(employee) {
     return (
-      <Text>{employee.name}</Text>
+      <EmployeeListItem employee={employee} />
     );
   }
 
