@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import Communications from 'react-native-communications';
 import { connect } from 'react-redux';
 import { Card, CardSection, Button, Confirm } from './common';
-import { employeeEdit, employeeUpdate } from '../actions';
+import { employeeEdit, employeeUpdate, employeeDelete } from '../actions';
 import EmployeeForm from './EmployeeForm';
 
 class EmployeeEdit extends Component {
@@ -38,6 +38,15 @@ class EmployeeEdit extends Component {
     this.setState({ showModal });
   }
 
+  onAccept() {
+    const { uid } = this.props.employee;
+    this.props.employeeDelete({ uid });
+  }
+
+  // onDecline() {
+  //
+  // }
+
   render() {
     return (
       <Card>
@@ -61,7 +70,7 @@ class EmployeeEdit extends Component {
 
         <Confirm
           visible={this.state.showModal}
-          onAccept={() => null}
+          onAccept={this.onAccept.bind(this)}
           onDecline={() => this.toggleModal()}
         >
           Are you sure you want to perform this action?
@@ -76,4 +85,4 @@ const mapStateToProps = state => {
   return { name, phone, shift };
 };
 
-export default connect(mapStateToProps, { employeeEdit, employeeUpdate })(EmployeeEdit);
+export default connect(mapStateToProps, { employeeEdit, employeeUpdate, employeeDelete })(EmployeeEdit);
