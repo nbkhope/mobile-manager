@@ -4,7 +4,8 @@ import { Actions } from 'react-native-router-flux';
 import {
   EMPLOYEE_UPDATE,
   EMPLOYEE_CREATE,
-  EMPLOYEES_FETCH_SUCCESS
+  EMPLOYEES_FETCH_SUCCESS,
+  EMPLOYEE_EDIT_SUCCESS
 } from './types';
 
 export const employeeUpdate = ({ prop, value }) => {
@@ -55,6 +56,14 @@ export const employeeEdit = ({ name, phone, shift, uid }) => {
       .set(({ name, phone, shift }))
       .then(() => {
         console.log("Employee edit was saved.");
+
+        // Clear up the form
+        dispatch({
+          type: EMPLOYEE_EDIT_SUCCESS
+        });
+
+        // Go back to employeeList; pass reset so that we don't have a back button
+        Actions.employeeList({ type: 'reset' });
       });
   };
 };
